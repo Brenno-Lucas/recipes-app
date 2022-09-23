@@ -13,15 +13,15 @@ const INVALID_EMAIL = 'test@';
 const VALID_PASSWORD = '1234567';
 const INVALID_PASSWORD = '123';
 
-describe('', () => {
-  test('Verifica se os inputs e botão estão na tela', () => {
+describe('Tela de login', () => {
+  test('verifica se os inputs e botão estão na tela', () => {
     renderWithRouterAndRedux(<App />);
     expect(screen.getByTestId(LOGIN_EMAIL_INPUT)).toBeInTheDocument();
     expect(screen.getByTestId(LOGIN_PASSWORD_INPUT)).toBeInTheDocument();
     expect(screen.getByTestId(LOGIN_BUTTON)).toBeInTheDocument();
   });
 
-  test('Verifica se ao digitar um email ou uma senha invalida o botão permanece desabilitado', () => {
+  test('verifica se ao digitar um email ou uma senha invalida o botão permanece desabilitado', () => {
     renderWithRouterAndRedux(<App />);
     const emailInput = (screen.getByTestId(LOGIN_EMAIL_INPUT));
     const passwordInput = (screen.getByTestId(LOGIN_PASSWORD_INPUT));
@@ -39,7 +39,7 @@ describe('', () => {
     expect(button).toBeDisabled();
   });
 
-  test('Verifica se ao digitar um email e uma senha valida o botão é habilitado', () => {
+  test('verifica se ao digitar um email e uma senha valida o botão é habilitado', () => {
     renderWithRouterAndRedux(<App />);
     const emailInput = (screen.getByTestId(LOGIN_EMAIL_INPUT));
     const passwordInput = (screen.getByTestId(LOGIN_PASSWORD_INPUT));
@@ -51,7 +51,7 @@ describe('', () => {
     expect(button).toBeEnabled();
   });
 
-  test('Verifica se ao fazer login a rota muda para "/meals"', () => {
+  test('verifica se ao fazer login a rota muda para "/meals"', () => {
     const { history } = renderWithRouterAndRedux(<App />);
     const emailInput = (screen.getByTestId(LOGIN_EMAIL_INPUT));
     const passwordInput = (screen.getByTestId(LOGIN_PASSWORD_INPUT));
