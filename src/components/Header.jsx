@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
@@ -12,14 +14,22 @@ class Header extends Component {
   };
 
   render() {
+    const { history } = this.props;
     return (
       <div>
         <h1>Header</h1>
-        <img
-          src={ profileIcon }
-          alt="profile-icon"
-          data-testid="profile-top-btn"
-        />
+        <div
+          role="button"
+          tabIndex={ 0 }
+          onClick={ history.push('/game') }
+          onKeyDown={ history.push('/game') }
+        >
+          <img
+            src={ profileIcon }
+            alt="profile-icon"
+            data-testid="profile-top-btn"
+          />
+        </div>
         <p data-testid="page-title">
           { this.pageTitle() }
         </p>
@@ -33,4 +43,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  history: PropTypes.objectOf(PropTypes.string).isRequired,
+};
+
+export default withRouter(Connect(Header));
