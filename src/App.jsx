@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
+import DoneRecipes from './pages/DoneRecipes';
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
         {/* <Route exact path="/drinks/:drink-id" component={  } /> */}
         {/* <Route exact path="/meals/:meal-id/in-progress" component={  } /> */}
         {/* <Route exact path="/drinks/:drink-id/in-progress" component={  } /> */}
-        {/* <Route exact path="/profile" component={  } /> */}
-        {/* <Route exact path="/done-recipes" component={  } /> */}
+        <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
         {/* <Route exact path="/favorite-recipes" component={  } /> */}
         {/* <Route exact path="/not-found" component={  } /> */}
       </Switch>
