@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const [isEmailValid, setIsEmailValid] = useState(false);
@@ -9,16 +10,17 @@ export default function Login() {
     password: '',
   });
 
+  const { email, password } = loginInfo;
+  const history = useHistory();
+
   useEffect(() => {
     const validateEmail = () => {
-      const { email } = loginInfo;
       const validation = /^[\w.]+@[\w.]+\.[a-z]{2,3}(\.[a-z]{2})?$/i.test(email);
       setIsEmailValid(validation);
     };
     validateEmail();
 
     const validatePassword = () => {
-      const { password } = loginInfo;
       const MINIMUM_PASSWORD_LENGTH = 7;
       const validation = password.length >= MINIMUM_PASSWORD_LENGTH;
       setIsPasswordValid(validation);
@@ -30,7 +32,7 @@ export default function Login() {
       setIsButtonDisabled(!validation);
     };
     checkLoginValidations();
-  }, [loginInfo, isEmailValid, isPasswordValid]);
+  }, [email, password, isEmailValid, isPasswordValid]);
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
@@ -40,9 +42,18 @@ export default function Login() {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('apertei');
+    localStorage.setItem('user', JSON.stringify({ email }));
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('drinksToken', 1);
+    history.push('/meals');
+  };
+
   return (
     <main>
-      <form>
+      <form onSubmit={ (e) => handleSubmit(e) }>
         <input
           type="text"
           name="email"
@@ -60,7 +71,7 @@ export default function Login() {
         />
 
         <button
-          type="button"
+          type="submit"
           data-testid="login-submit-btn"
           disabled={ isButtonDisabled }
         >
