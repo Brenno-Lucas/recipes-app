@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { requestMeals, requestDrinks } from '../redux/actions';
 import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
+import Footer from '../components/Footer';
 
 function Recipes({ fetchMeals, fetchDrinks }) {
   useEffect(() => {
@@ -28,6 +29,7 @@ function Recipes({ fetchMeals, fetchDrinks }) {
       {
         renderRecipe()
       }
+      <Footer />
     </section>
   );
 }

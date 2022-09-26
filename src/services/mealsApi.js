@@ -11,8 +11,11 @@ export default async function fetchMeals() {
 }
 
 export const fetchMealsById = async (mealId) => {
-  const URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
-  const response = await fetch(`${URL}${mealId}`);
+  const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+  const ENDPOINT = 'lookup.php';
+  const ENDPOINT_PARAMS = 'i=';
+  const URL = `${BASE_URL}/${ENDPOINT}?${ENDPOINT_PARAMS}${mealId}`;
+  const response = await fetch(URL);
   const { meals } = await response.json();
 
   return meals[0];
