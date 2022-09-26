@@ -5,7 +5,7 @@ import Profile from '../pages/Profile';
 import { renderWithRouterAndRedux } from './helpers/renderWithRouterAndRedux';
 
 describe('Profile', () => {
-  it('testando a tela de Perfil', () => {
+  it('testando a tela Profile', () => {
     const { debug } = renderWithRouterAndRedux(<Profile />);
     debug();
   });
