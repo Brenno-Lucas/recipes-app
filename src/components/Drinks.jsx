@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RecipeCard from './RecipeCard';
-import Footer from '../components/Footer';
+import Footer from './Footer';
 
 function Drinks({ drinks }) {
   return (
@@ -10,10 +10,10 @@ function Drinks({ drinks }) {
         {
           drinks.map(({ idDrink, strDrink, strDrinkThumb }, index) => (
             <RecipeCard
-              key={idDrink}
-              index={index}
-              recipeName={strDrink}
-              recipeImage={strDrinkThumb}
+              key={ idDrink }
+              index={ index }
+              recipeName={ strDrink }
+              recipeImage={ strDrinkThumb }
             />
           ))
         }
