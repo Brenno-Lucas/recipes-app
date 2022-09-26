@@ -46,5 +46,6 @@ describe('Profile', () => {
 
     const email = screen.getByTestId('profile-email');
     expect(email).toHaveTextContent('teste@teste.com');
+    expect(history.location.pathname).toBe('/');
   });
 });
