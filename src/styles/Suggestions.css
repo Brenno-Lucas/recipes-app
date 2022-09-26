@@ -1,0 +1,9 @@
+.suggestions-container {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.suggestion-img {
+  width: 50vw;
+}

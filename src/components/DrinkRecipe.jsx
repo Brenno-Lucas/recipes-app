@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchDrinksById } from '../services/drinksApi';
+import fetchMeals from '../services/mealsApi';
+import MealsSuggestions from './MealsSuggestions';
+import '../styles/RecipeDetails.css';
 
 export default function DrinkRecipe({ match }) {
   const { id: drinkId } = match.params;
   const [drinkInfo, setDrinkInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [listOfIngredients, setListOfIngredients] = useState([]);
+  const [listOfSuggestions, setListOfSuggestions] = useState([]);
 
   const {
     strDrinkThumb,
@@ -21,6 +25,18 @@ export default function DrinkRecipe({ match }) {
     };
     getRecipeDetails();
   }, [drinkId, loading]);
+
+  useEffect(() => {
+    const getSuggestions = async () => {
+      const MAX_NUMBER_OF_SUGGESTIONS = 6;
+      let suggestions = await fetchMeals();
+      suggestions = suggestions.filter((item, index) => (
+        index < MAX_NUMBER_OF_SUGGESTIONS));
+      setListOfSuggestions([...suggestions]);
+    };
+
+    getSuggestions();
+  }, []);
 
   useEffect(() => {
     const MAX_NUMBER_OF_INGREDIENTS = 15;
@@ -43,7 +59,7 @@ export default function DrinkRecipe({ match }) {
   }, [drinkInfo]);
 
   return (
-    <section>
+    <section className="recipe-details-container">
       <img
         src={ strDrinkThumb }
         alt={ `Foto de um ${strDrink}` }
@@ -68,6 +84,8 @@ export default function DrinkRecipe({ match }) {
       </ul>
 
       <p data-testid="instructions">{strInstructions}</p>
+
+      <MealsSuggestions listOfSuggestions={ listOfSuggestions } />
     </section>
   );
 }

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchMealsById } from '../services/mealsApi';
+import fetchDrinks from '../services/drinksApi';
+import DrinkSuggestions from './DrinkSuggestions';
+import '../styles/RecipeDetails.css';
 
 export default function MealRecipe({ match }) {
   const { id: mealId } = match.params;
   const [mealInfo, setMealInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [listOfIngredients, setListOfIngredients] = useState([]);
+  const [listOfSuggestions, setListOfSuggestions] = useState([]);
 
   const {
     strMealThumb,
@@ -22,6 +26,18 @@ export default function MealRecipe({ match }) {
     };
     getRecipeDetails();
   }, [mealId, loading]);
+
+  useEffect(() => {
+    const getSuggestions = async () => {
+      const MAX_NUMBER_OF_SUGGESTIONS = 6;
+      let suggestions = await fetchDrinks();
+      suggestions = suggestions.filter((item, index) => (
+        index < MAX_NUMBER_OF_SUGGESTIONS));
+      setListOfSuggestions([...suggestions]);
+    };
+
+    getSuggestions();
+  }, []);
 
   useEffect(() => {
     const MAX_NUMBER_OF_INGREDIENTS = 20;
@@ -44,7 +60,7 @@ export default function MealRecipe({ match }) {
   }, [mealInfo]);
 
   return (
-    <section>
+    <section className="recipe-details-container">
       <img
         src={ strMealThumb }
         alt={ `Foto de um ${strMeal}` }
@@ -79,6 +95,8 @@ export default function MealRecipe({ match }) {
         title="Embedded youtube"
         data-testid="video"
       />
+
+      <DrinkSuggestions listOfSuggestions={ listOfSuggestions } />
     </section>
   );
 }
