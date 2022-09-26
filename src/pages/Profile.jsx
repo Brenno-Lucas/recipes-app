@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 function Profile() {
   const [userEmail] = useState(localStorage.getItem('user')
@@ -50,6 +51,7 @@ function Profile() {
           Logout
         </button>
       </div>
+      <Footer />
     </>
   );
 }
