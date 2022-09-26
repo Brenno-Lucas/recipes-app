@@ -1,5 +1,5 @@
-import fetchMeals from '../../services/fetchMeals';
-import fetchDrinks from '../../services/fetchDrinks';
+import fetchMeals from '../../services/mealsApi';
+import fetchDrinks from '../../services/drinksApi';
 import MAX_RECIPES_QUANTITY from '../../utils/constants';
 
 export const REQUESTING_MEALS = 'REQUESTING_MEALS';

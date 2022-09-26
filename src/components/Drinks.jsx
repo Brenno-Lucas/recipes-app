@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 function Drinks({ drinks }) {
@@ -7,12 +8,17 @@ function Drinks({ drinks }) {
     <section className="drink-cards-section">
       {
         drinks.map(({ idDrink, strDrink, strDrinkThumb }, index) => (
-          <RecipeCard
+          <Link
             key={ idDrink }
-            index={ index }
-            recipeName={ strDrink }
-            recipeImage={ strDrinkThumb }
-          />
+            to={ `/drinks/${idDrink}` }
+          >
+            <RecipeCard
+              key={ idDrink }
+              index={ index }
+              recipeName={ strDrink }
+              recipeImage={ strDrinkThumb }
+            />
+          </Link>
         ))
       }
     </section>

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 function Meals({ meals }) {
@@ -7,12 +8,16 @@ function Meals({ meals }) {
     <section className="meals-cards-section">
       {
         meals.map(({ idMeal, strMeal, strMealThumb }, index) => (
-          <RecipeCard
+          <Link
             key={ idMeal }
-            index={ index }
-            recipeName={ strMeal }
-            recipeImage={ strMealThumb }
-          />
+            to={ `/meals/${idMeal}` }
+          >
+            <RecipeCard
+              index={ index }
+              recipeName={ strMeal }
+              recipeImage={ strMealThumb }
+            />
+          </Link>
         ))
       }
     </section>

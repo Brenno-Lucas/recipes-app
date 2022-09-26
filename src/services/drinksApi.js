@@ -9,3 +9,11 @@ export default async function fetchDrinks() {
 
   return drinks;
 }
+
+export const fetchDrinksById = async (drinkId) => {
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
+  const response = await fetch(`${URL}${drinkId}`);
+  const { drinks } = await response.json();
+
+  return drinks[0];
+};

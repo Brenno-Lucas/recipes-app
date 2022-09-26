@@ -9,3 +9,11 @@ export default async function fetchMeals() {
 
   return meals;
 }
+
+export const fetchMealsById = async (mealId) => {
+  const URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+  const response = await fetch(`${URL}${mealId}`);
+  const { meals } = await response.json();
+
+  return meals[0];
+};
