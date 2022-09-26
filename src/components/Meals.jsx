@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RecipeCard from './RecipeCard';
-import Footer from './Footer';
 
 function Meals({ meals }) {
   return (
