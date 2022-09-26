@@ -7,7 +7,6 @@ import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import Recipes from './pages/Recipes';
 
-
 function App() {
   return (
     <main>

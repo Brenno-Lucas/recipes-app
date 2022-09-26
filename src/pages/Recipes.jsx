@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { requestMeals, requestDrinks } from '../redux/actions';
 import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
+import Categories from '../components/Categories';
 
 function Recipes({ fetchMeals, fetchDrinks }) {
   useEffect(() => {
@@ -24,7 +25,8 @@ function Recipes({ fetchMeals, fetchDrinks }) {
   };
 
   return (
-    <section className="cards-section">
+    <section className="recipes-section">
+      <Categories />
       {
         renderRecipe()
       }
@@ -38,8 +40,8 @@ Recipes.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMeals: () => dispatch(requestMeals()),
-  fetchDrinks: () => dispatch(requestDrinks()),
+  fetchMeals: () => dispatch(requestMeals),
+  fetchDrinks: () => dispatch(requestDrinks),
 });
 
 export default connect(null, mapDispatchToProps)(Recipes);
