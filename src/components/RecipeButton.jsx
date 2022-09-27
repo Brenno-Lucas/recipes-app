@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export default function StartRecipeButton({ id: recipeId, type }) {
+export default function RecipeButton({ id: recipeId, type }) {
   const [recipeHasBeenDone, setRecipeHasBeenDone] = useState(false);
   const [recipeIsInProgress, setRecipeIsInProgress] = useState(false);
 
@@ -51,7 +51,7 @@ export default function StartRecipeButton({ id: recipeId, type }) {
   );
 }
 
-StartRecipeButton.propTypes = {
+RecipeButton.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };

@@ -4,7 +4,7 @@ import { fetchMealsById } from '../services/mealsApi';
 import { fetchDrinks } from '../services/drinksApi';
 import DrinkSuggestions from './DrinkSuggestions';
 import '../styles/RecipeDetails.css';
-import StartRecipeButton from './StartRecipeButton';
+import RecipeButton from './RecipeButton';
 
 export default function MealRecipe({ match }) {
   const { id: mealId } = match.params;
@@ -99,7 +99,7 @@ export default function MealRecipe({ match }) {
 
       <DrinkSuggestions listOfSuggestions={ listOfSuggestions } />
 
-      <StartRecipeButton id={ mealId } type="meals" />
+      <RecipeButton id={ mealId } type="meals" />
     </section>
   );
 }
