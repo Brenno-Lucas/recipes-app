@@ -32,3 +32,13 @@ export async function fetchMealsByCategory(categoryName) {
 
   return meals;
 }
+
+export const fetchMealsById = async (mealId) => {
+  const ENDPOINT = 'lookup.php';
+  const ENDPOINT_PARAMS = 'i=';
+  const URL = `${BASE_URL}/${ENDPOINT}?${ENDPOINT_PARAMS}${mealId}`;
+  const response = await fetch(URL);
+  const { meals } = await response.json();
+
+  return meals[0];
+};

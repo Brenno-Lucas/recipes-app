@@ -32,3 +32,13 @@ export async function fetchDrinksByCategory(categoryName) {
 
   return drinks;
 }
+
+export const fetchDrinksById = async (drinkId) => {
+  const ENDPOINT = 'lookup.php';
+  const ENDPOINT_PARAMS = 'i=';
+  const URL = `${BASE_URL}/${ENDPOINT}?${ENDPOINT_PARAMS}${drinkId}`;
+  const response = await fetch(URL);
+  const { drinks } = await response.json();
+
+  return drinks[0];
+};

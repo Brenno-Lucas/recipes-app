@@ -6,6 +6,7 @@ import { requestMeals, requestDrinks } from '../redux/actions';
 import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
 import Categories from '../components/Categories';
+import Footer from '../components/Footer';
 
 function Recipes({ fetchMeals, fetchDrinks }) {
   useEffect(() => {
@@ -30,6 +31,7 @@ function Recipes({ fetchMeals, fetchDrinks }) {
       {
         renderRecipe()
       }
+      <Footer />
     </section>
   );
 }
