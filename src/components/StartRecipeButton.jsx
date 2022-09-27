@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function StartRecipeButton({ id: recipeId, type }) {
   const [recipeHasBeenDone, setRecipeHasBeenDone] = useState(false);
   const [recipeIsInProgress, setRecipeIsInProgress] = useState(false);
 
+  const history = useHistory();
+
   useEffect(() => {
-    const getFinishedRecipes = () => {
+    const verifyIfRecipeHasBeenFinished = () => {
       const doneRecipesList = JSON.parse(localStorage.getItem('doneRecipes'));
 
       if (doneRecipesList) {
-        const validation = doneRecipesList.find(({ id }) => id === recipeId);
-        setRecipeHasBeenDone(validation);
+        const isDone = doneRecipesList.find(({ id }) => id === recipeId);
+        setRecipeHasBeenDone(isDone);
       }
     };
-    getFinishedRecipes();
+    verifyIfRecipeHasBeenFinished();
 
-    const getRecipesInProgress = () => {
+    const verifyIfRecipeIsInProgress = () => {
       const inProgressRecipesList = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
       if (inProgressRecipesList) {
-        const validation = inProgressRecipesList[type][recipeId] !== undefined;
-        setRecipeIsInProgress(validation);
+        const isInProgress = inProgressRecipesList[type][recipeId] !== undefined;
+        setRecipeIsInProgress(isInProgress);
       }
     };
-    getRecipesInProgress();
+    verifyIfRecipeIsInProgress();
   }, [recipeId, type]);
+
+  const handleClick = () => {
+    history.push(`/${type}/${recipeId}/in-progress`);
+  };
 
   return (
     <div className="recipe-button-container">
@@ -34,6 +41,7 @@ export default function StartRecipeButton({ id: recipeId, type }) {
           <button
             type="button"
             data-testid="start-recipe-btn"
+            onClick={ handleClick }
           >
             {recipeIsInProgress ? 'Continue Recipe' : 'Start Recipe'}
           </button>
