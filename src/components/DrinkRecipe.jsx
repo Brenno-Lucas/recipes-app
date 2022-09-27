@@ -88,7 +88,7 @@ export default function DrinkRecipe({ match }) {
 
       <MealsSuggestions listOfSuggestions={ listOfSuggestions } />
 
-      <StartRecipeButton />
+      <StartRecipeButton id={ drinkId } />
     </section>
   );
 }
