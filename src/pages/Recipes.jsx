@@ -17,12 +17,8 @@ function Recipes({ fetchMeals, fetchDrinks }) {
   const { location: { pathname } } = useHistory();
 
   const renderRecipe = () => {
-    switch (pathname) {
-    case '/meals':
-      return <Meals />;
-    default:
-      return <Drinks />;
-    }
+    if (pathname.includes('meals')) return <Meals />;
+    return <Drinks />;
   };
 
   return (

@@ -24,10 +24,7 @@ export default function MealRecipe({ match }) {
     const getRecipeDetails = async () => {
       setMealInfo(await fetchMealsById(mealId));
     };
-    getRecipeDetails();
-  }, [mealId, loading]);
 
-  useEffect(() => {
     const getSuggestions = async () => {
       const MAX_NUMBER_OF_SUGGESTIONS = 6;
       let suggestions = await fetchDrinks();
@@ -36,8 +33,9 @@ export default function MealRecipe({ match }) {
       setListOfSuggestions([...suggestions]);
     };
 
+    getRecipeDetails();
     getSuggestions();
-  }, []);
+  }, [mealId]);
 
   useEffect(() => {
     const MAX_NUMBER_OF_INGREDIENTS = 20;
@@ -57,7 +55,7 @@ export default function MealRecipe({ match }) {
 
     setListOfIngredients([...auxIngredients]);
     setLoading(false);
-  }, [mealInfo]);
+  }, [mealInfo, loading]);
 
   return (
     <section className="recipe-details-container">

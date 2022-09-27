@@ -21,7 +21,7 @@ function CategoryCard(props) {
   const { location: { pathname } } = useHistory();
 
   const handleCategoryFilter = (fetchMeals, fetchDrinks) => {
-    if (pathname === '/meals') {
+    if (pathname.includes('meals')) {
       fetchMeals(categoryName);
     } else {
       fetchDrinks(categoryName);
