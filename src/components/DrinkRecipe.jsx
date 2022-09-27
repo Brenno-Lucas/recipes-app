@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { fetchDrinksById } from '../services/drinksApi';
-import fetchMeals from '../services/mealsApi';
+import { fetchMeals } from '../services/mealsApi';
 import MealsSuggestions from './MealsSuggestions';
 import '../styles/RecipeDetails.css';
 

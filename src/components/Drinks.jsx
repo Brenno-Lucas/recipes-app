@@ -1,26 +1,23 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 function Drinks({ drinks }) {
   return (
-    <section className="drink-cards-section">
-      {
-        drinks.map(({ idDrink, strDrink, strDrinkThumb }, index) => (
-          <Link
-            key={ idDrink }
-            to={ `/drinks/${idDrink}` }
-          >
+    <section className="drinks-section">
+      <section className="drinks-cards-section">
+        {
+          drinks.map(({ idDrink, strDrink, strDrinkThumb }, index) => (
             <RecipeCard
               key={ idDrink }
               index={ index }
+              linkTo={ `drinks/${idDrink}` }
               recipeName={ strDrink }
               recipeImage={ strDrinkThumb }
             />
-          </Link>
-        ))
-      }
+          ))
+        }
+      </section>
     </section>
   );
 }

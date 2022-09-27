@@ -1,7 +1,7 @@
 .suggestions-container {
   display: flex;
-  width: 100%;
   overflow-x: scroll;
+  width: 100%;
 }
 
 .suggestion-img {
