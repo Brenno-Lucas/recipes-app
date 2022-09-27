@@ -1,3 +1,2 @@
-const MAX_RECIPES_QUANTITY = 12;
-
-export default MAX_RECIPES_QUANTITY;
+export const MAX_RECIPES_QUANTITY = 12;
+export const MAX_CATEGORIES_QUANTITY = 5;
