@@ -11,7 +11,7 @@ function Meals({ meals }) {
             <RecipeCard
               key={ idMeal }
               index={ index }
-              linkTo={ `meals/${idMeal}` }
+              linkTo={ `/meals/${idMeal}` }
               recipeName={ strMeal }
               recipeImage={ strMealThumb }
             />

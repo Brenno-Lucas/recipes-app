@@ -12,7 +12,7 @@ export default function Categories() {
 
   useEffect(() => {
     const requestCategories = async () => {
-      const recipeCategories = pathname === '/meals'
+      const recipeCategories = pathname.includes('meals')
         ? await fetchMealsCategories()
         : await fetchDrinksCategories();
 
