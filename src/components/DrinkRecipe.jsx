@@ -5,6 +5,8 @@ import { fetchMeals } from '../services/mealsApi';
 import MealsSuggestions from './MealsSuggestions';
 import '../styles/RecipeDetails.css';
 import RecipeButton from './RecipeButton';
+import ShareButton from './ShareButton';
+import FavoriteButton from './FavoriteButton';
 
 export default function DrinkRecipe({ match }) {
   const { id: drinkId } = match.params;
@@ -14,6 +16,8 @@ export default function DrinkRecipe({ match }) {
   const [listOfSuggestions, setListOfSuggestions] = useState([]);
 
   const {
+    idDrink,
+    strCategory,
     strDrinkThumb,
     strDrink,
     strAlcoholic,
@@ -59,6 +63,20 @@ export default function DrinkRecipe({ match }) {
 
   return (
     <section className="recipe-details-container">
+      <ShareButton />
+      {
+        Object.keys(drinkInfo).length
+        && (
+          <FavoriteButton
+            id={ idDrink }
+            type="drink"
+            category={ strCategory }
+            alcoholicOrNot={ strAlcoholic }
+            name={ strDrink }
+            image={ strDrinkThumb }
+          />
+        )
+      }
       <img
         src={ strDrinkThumb }
         alt={ `Foto de um ${strDrink}` }
