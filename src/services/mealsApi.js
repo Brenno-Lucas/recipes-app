@@ -42,3 +42,11 @@ export const fetchMealsById = async (mealId) => {
 
   return meals[0];
 };
+
+export async function fetchMealsByType(param1, param2) {
+  const URL = `${BASE_URL}/${param1}${param2}`;
+
+  const response = await fetch(URL);
+  const { meals } = await response.json();
+  return meals;
+}

@@ -17,6 +17,7 @@ function drinkReducer(state = INITIAL_STATE, { type, payload }) {
     return {
       ...state,
       drinks: payload,
+      error: '',
       requesting: false,
     };
   case SET_DRINKS_ERROR_MESSAGE:

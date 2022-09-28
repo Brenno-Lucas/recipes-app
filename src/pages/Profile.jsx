@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 function Profile() {
   const [userEmail] = useState(localStorage.getItem('user')
@@ -13,6 +14,7 @@ function Profile() {
 
   return (
     <>
+      <Header />
       <div>
         <h3 data-testid="profile-email">
           { userEmail.email }

@@ -42,3 +42,11 @@ export const fetchDrinksById = async (drinkId) => {
 
   return drinks[0];
 };
+
+export async function fetchDrinksByType(param1, param2) {
+  const URL = `${BASE_URL}/${param1}${param2}`;
+
+  const response = await fetch(URL);
+  const { drinks } = await response.json();
+  return drinks;
+}
