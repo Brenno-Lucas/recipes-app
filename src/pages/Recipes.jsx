@@ -6,6 +6,8 @@ import { requestMeals, requestDrinks } from '../redux/actions';
 import Header from '../components/Header';
 import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
+import Categories from '../components/Categories';
+import Footer from '../components/Footer';
 
 function Recipes({ fetchMeals, fetchDrinks }) {
   useEffect(() => {
@@ -16,22 +18,20 @@ function Recipes({ fetchMeals, fetchDrinks }) {
   const { location: { pathname } } = useHistory();
 
   const renderRecipe = () => {
-    switch (pathname) {
-    case '/meals':
-      return <Meals />;
-    default:
-      return <Drinks />;
-    }
+    if (pathname.includes('meals')) return <Meals />;
+    return <Drinks />;
   };
 
   return (
     <div>
       <Header />
-      <section className="cards-section">
+      <section className="recipes-section">
+        <Categories />
         {
           renderRecipe()
         }
       </section>
+      <Footer />
     </div>
   );
 }
@@ -42,8 +42,8 @@ Recipes.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchMeals: () => dispatch(requestMeals()),
-  fetchDrinks: () => dispatch(requestDrinks()),
+  fetchMeals: () => dispatch(requestMeals),
+  fetchDrinks: () => dispatch(requestDrinks),
 });
 
 export default connect(null, mapDispatchToProps)(Recipes);

@@ -1,6 +1,8 @@
-import { fetchMeals, fetchMealsByType } from '../../services/fetchMeals';
-import { fetchDrinks, fetchDrinksByType } from '../../services/fetchDrinks';
-import MAX_RECIPES_QUANTITY from '../../utils/constants';
+import { fetchMeals,
+  fetchMealsByCategory, fetchMealsByType } from '../../services/mealsApi';
+import { fetchDrinks,
+  fetchDrinksByCategory, fetchDrinksByType } from '../../services/drinksApi';
+import { MAX_RECIPES_QUANTITY } from '../../utils/constants';
 
 export const REQUESTING_MEALS = 'REQUESTING_MEALS';
 export const SET_MEALS_ERROR_MESSAGE = 'SET_MEALS_ERROR_MESSAGE';
@@ -25,12 +27,24 @@ const requestingMeals = () => ({
   type: REQUESTING_MEALS,
 });
 
-export function requestMeals() {
+export async function requestMeals(dispatch) {
+  dispatch(requestingMeals());
+
+  try {
+    const meals = await fetchMeals();
+    if (!meals) throw new Error(errorMSG);
+    dispatch(setMeals(meals.slice(0, MAX_RECIPES_QUANTITY)));
+  } catch (error) {
+    dispatch(setMealsErrorMessage(error.message));
+  }
+}
+
+export function requestMealsByCategory(categoryName) {
   return async (dispatch) => {
     dispatch(requestingMeals());
 
     try {
-      const meals = await fetchMeals();
+      const meals = await fetchMealsByCategory(categoryName);
       if (!meals) throw new Error(errorMSG);
       dispatch(setMeals(meals.slice(0, MAX_RECIPES_QUANTITY)));
     } catch (error) {
@@ -69,12 +83,24 @@ const requestingDrinks = () => ({
   type: REQUESTING_DRINKS,
 });
 
-export function requestDrinks() {
+export async function requestDrinks(dispatch) {
+  dispatch(requestingDrinks());
+
+  try {
+    const drinks = await fetchDrinks();
+    if (!drinks) throw new Error(errorMSG);
+    dispatch(setDrinks(drinks.slice(0, MAX_RECIPES_QUANTITY)));
+  } catch (error) {
+    dispatch(setDrinksErrorMessage(error.message));
+  }
+}
+
+export function requestDrinksByCategory(categoryName) {
   return async (dispatch) => {
     dispatch(requestingDrinks());
 
     try {
-      const drinks = await fetchDrinks();
+      const drinks = await fetchDrinksByCategory(categoryName);
       if (!drinks) throw new Error(errorMSG);
       dispatch(setDrinks(drinks.slice(0, MAX_RECIPES_QUANTITY)));
     } catch (error) {

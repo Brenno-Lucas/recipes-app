@@ -4,17 +4,20 @@ import RecipeCard from './RecipeCard';
 
 function Meals({ meals }) {
   return (
-    <section className="meals-cards-section">
-      {
-        meals.map(({ idMeal, strMeal, strMealThumb }, index) => (
-          <RecipeCard
-            key={ idMeal }
-            index={ index }
-            recipeName={ strMeal }
-            recipeImage={ strMealThumb }
-          />
-        ))
-      }
+    <section className="meals-section">
+      <section className="meals-cards-section">
+        {
+          meals.map(({ idMeal, strMeal, strMealThumb }, index) => (
+            <RecipeCard
+              key={ idMeal }
+              index={ index }
+              linkTo={ `/meals/${idMeal}` }
+              recipeName={ strMeal }
+              recipeImage={ strMealThumb }
+            />
+          ))
+        }
+      </section>
     </section>
   );
 }
