@@ -1,9 +1,8 @@
 import React from 'react';
 import { renderWithRouterAndRedux } from './helpers/renderWithRouterAndRedux';
 import meals from './mocks/meals';
-import drinks from './mocks/drinks';
+import drinks from '../../cypress/mocks/drinks';
 import RecipeDetails from '../pages/RecipeDetails';
-import App from '../App';
 
 describe('Tela de receitas', () => {
   beforeEach(() => {

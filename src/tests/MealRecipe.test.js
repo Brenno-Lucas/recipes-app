@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWithRouterAndRedux';
 import meals from './mocks/meals';
-import drinks from './mocks/drinks';
+import drinks from '../../cypress/mocks/drinks';
 
 describe('Tela de receita de comidas', () => {
   beforeEach(() => {
