@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { requestMeals, requestDrinks } from '../redux/actions';
+import Header from '../components/Header';
 import Meals from '../components/Meals';
 import Drinks from '../components/Drinks';
 import Categories from '../components/Categories';
@@ -22,13 +23,16 @@ function Recipes({ fetchMeals, fetchDrinks }) {
   };
 
   return (
-    <section className="recipes-section">
-      <Categories />
-      {
-        renderRecipe()
-      }
+    <div>
+      <Header />
+      <section className="recipes-section">
+        <Categories />
+        {
+          renderRecipe()
+        }
+      </section>
       <Footer />
-    </section>
+    </div>
   );
 }
 

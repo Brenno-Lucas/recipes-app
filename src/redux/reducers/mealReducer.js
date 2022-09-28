@@ -17,6 +17,7 @@ function mealReducer(state = INITIAL_STATE, { type, payload }) {
     return {
       ...state,
       meals: payload,
+      error: '',
       requesting: false,
     };
   case SET_MEALS_ERROR_MESSAGE:
