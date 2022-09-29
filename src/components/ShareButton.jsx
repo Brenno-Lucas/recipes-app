@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 
-export default function ShareButton() {
+export default function ShareButton({ type, id, index }) {
   const [linkCopied, setLinkCopied] = useState('');
   const [timeoutId, setTimeoutId] = useState(0);
 
   const copyRecipeLink = () => {
-    copy(window.location.href);
+    copy(`http://${window.location.hostname}:3000/${type}/${id}`);
     setLinkCopied('Link copied!');
 
     const timeoutTimer = 2000;
@@ -33,7 +34,11 @@ export default function ShareButton() {
         onClick={ copyRecipeLink }
       >
         <figure>
-          <img src={ shareIcon } alt="Icone de compartilhamento" />
+          <img
+            src={ shareIcon }
+            alt="Ícone de compartilhamento"
+            data-testid={ `${index}-horizontal-share-btn` }
+          />
         </figure>
       </button>
       {
@@ -42,3 +47,9 @@ export default function ShareButton() {
     </div>
   );
 }
+
+ShareButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+};
