@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import UnfavoriteButton from './UnfavoriteButton';
 import ShareButton from './ShareButton';
+import '../styles/FavoriteRecipes.css';
 
 function FavoriteCard({ recipe, index }) {
   const { image, name, category, nationality, alcoholicOrNot, type, id } = recipe;
@@ -21,13 +23,15 @@ function FavoriteCard({ recipe, index }) {
 
   return (
     <div>
-      <img
-        src={ image }
-        alt={ `Foto de um(a) ${name}` }
-        data-testid={ `${index}-horizontal-image` }
-      />
-
-      <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+      <Link to={ `/${type}s/${id}` }>
+        <img
+          className="fav-card-img"
+          src={ image }
+          alt={ `Foto de um(a) ${name}` }
+          data-testid={ `${index}-horizontal-image` }
+        />
+        <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+      </Link>
 
       <p data-testid={ `${index}-horizontal-top-text` }>
         {`${nationality} - ${recipeCategory}`}
