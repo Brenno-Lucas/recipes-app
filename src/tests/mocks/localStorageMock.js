@@ -1,4 +1,4 @@
-const favoriteRecipes = [
+export const favoriteRecipes = [
   {
     id: '53060',
     type: 'meal',
@@ -37,4 +37,49 @@ const favoriteRecipes = [
   },
 ];
 
-export default favoriteRecipes;
+export const doneRecipes = [
+  {
+    id: '53060',
+    type: 'meal',
+    nationality: 'Croatian',
+    category: 'Side',
+    alcoholicOrNot: '',
+    name: 'Burek',
+    image: 'https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg',
+    doneDate: '25/09/2022',
+    tags: ['bun', 'baking'],
+  },
+  {
+    id: '53065',
+    type: 'meal',
+    nationality: 'Japanese',
+    category: 'Seafood',
+    alcoholicOrNot: '',
+    name: 'Sushi',
+    image: 'https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg',
+    doneDate: '01/09/2022',
+    tags: ['bun', 'baking'],
+  },
+  {
+    id: '17225',
+    type: 'drink',
+    nationality: '',
+    category: 'Cocktail',
+    alcoholicOrNot: 'Alcoholic',
+    name: 'Ace',
+    image: 'https://www.thecocktaildb.com/images/media/drink/l3cd7f1504818306.jpg',
+    doneDate: '29/09/2022',
+    tags: ['bun', 'baking'],
+  },
+  {
+    id: '17837',
+    type: 'drink',
+    nationality: '',
+    category: 'Ordinary Drink',
+    alcoholicOrNot: 'Alcoholic',
+    name: 'Adam',
+    image: 'https://www.thecocktaildb.com/images/media/drink/v0at4i1582478473.jpg',
+    doneDate: '16/09/2022',
+    tags: ['bun', 'baking'],
+  },
+];

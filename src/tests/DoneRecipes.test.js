@@ -3,15 +3,15 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWithRouterAndRedux';
-import { favoriteRecipes } from './mocks/localStorageMock';
+import { doneRecipes } from './mocks/localStorageMock';
 
-describe('Tela de receita favoritas', () => {
+describe('Tela de receita feitas', () => {
   beforeEach(() => {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+    localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
   });
 
   afterEach(() => {
-    localStorage.clear('favoriteRecipes');
+    localStorage.clear('doneRecipes');
   });
 
   const ALL_BUTTON = 'filter-by-all-btn';
@@ -20,10 +20,11 @@ describe('Tela de receita favoritas', () => {
   const CARD_IMAGE = '-horizontal-image';
   const CARD_TOP_TEXT = '-horizontal-top-text';
   const CARD_NAME = '-horizontal-name';
+  const CARD_DONE = '-horizontal-done-date';
+  const CARD_TAG = '-horizontal-tag';
   const CARD_SHARE_BUTTON = '-horizontal-share-btn';
-  const CARD_FAVORITE_BUTTON = '-horizontal-favorite-btn';
 
-  const ROUTE = '/favorite-recipes';
+  const ROUTE = '/done-recipes';
 
   test('verifica se os elementos necessários estão na tela', () => {
     renderWithRouterAndRedux(<App />, undefined, ROUTE);
@@ -36,7 +37,8 @@ describe('Tela de receita favoritas', () => {
       expect(screen.getByTestId(`${index}${CARD_TOP_TEXT}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_NAME}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_SHARE_BUTTON}`)).toBeInTheDocument();
-      expect(screen.getByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}${CARD_DONE}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}-bun${CARD_TAG}`)).toBeInTheDocument();
     }
   });
 
@@ -52,7 +54,8 @@ describe('Tela de receita favoritas', () => {
       expect(screen.getByTestId(`${index}${CARD_TOP_TEXT}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_NAME}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_SHARE_BUTTON}`)).toBeInTheDocument();
-      expect(screen.getByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}${CARD_DONE}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}-bun${CARD_TAG}`)).toBeInTheDocument();
     }
   });
 
@@ -68,7 +71,8 @@ describe('Tela de receita favoritas', () => {
       expect(screen.getByTestId(`${index}${CARD_TOP_TEXT}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_NAME}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_SHARE_BUTTON}`)).toBeInTheDocument();
-      expect(screen.getByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}${CARD_DONE}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}-bun${CARD_TAG}`)).toBeInTheDocument();
     }
   });
 
@@ -87,11 +91,12 @@ describe('Tela de receita favoritas', () => {
       expect(screen.getByTestId(`${index}${CARD_TOP_TEXT}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_NAME}`)).toBeInTheDocument();
       expect(screen.getByTestId(`${index}${CARD_SHARE_BUTTON}`)).toBeInTheDocument();
-      expect(screen.getByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}${CARD_DONE}`)).toBeInTheDocument();
+      expect(screen.getByTestId(`${index}-bun${CARD_TAG}`)).toBeInTheDocument();
     }
   });
 
-  test('verifica se caso não houver receitas favoritadas a tela está vazia', () => {
+  test('verifica se caso não houver receitas finalizadas a tela está vazia', () => {
     localStorage.clear('favoriteRecipes');
 
     renderWithRouterAndRedux(<App />, undefined, ROUTE);
@@ -104,17 +109,8 @@ describe('Tela de receita favoritas', () => {
       expect(screen.queryByTestId(`${index}${CARD_TOP_TEXT}`)).toBeNull();
       expect(screen.queryByTestId(`${index}${CARD_NAME}`)).toBeNull();
       expect(screen.queryByTestId(`${index}${CARD_SHARE_BUTTON}`)).toBeNull();
-      expect(screen.queryByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeNull();
+      expect(screen.queryByTestId(`${index}${CARD_DONE}`)).toBeNull();
+      expect(screen.queryByTestId(`${index}-bun${CARD_TAG}`)).toBeNull();
     }
-  });
-
-  test('verifica se ao "desfavoritar" uma receita ela some da tela', () => {
-    renderWithRouterAndRedux(<App />, undefined, ROUTE);
-
-    const FIRST_RECIPE = screen.getByTestId(`3${CARD_NAME}`);
-
-    expect(FIRST_RECIPE).toBeInTheDocument();
-    userEvent.click(screen.getByTestId(`3${CARD_FAVORITE_BUTTON}`));
-    expect(FIRST_RECIPE).not.toBeInTheDocument();
   });
 });
