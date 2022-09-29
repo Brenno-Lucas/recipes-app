@@ -52,3 +52,4 @@ describe('Profile', () => {
     expect(history.location.pathname).toBe('/');
   });
 });
+//
