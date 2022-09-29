@@ -11,6 +11,7 @@ export const REQUESTING_DRINKS = 'REQUESTING_DRINKS';
 export const SET_DRINKS_ERROR_MESSAGE = 'SET_DRINKS_ERROR_MESSAGE';
 export const SET_DRINKS = 'SET_DRINKS';
 export const SET_TYPE = 'SET_TYPE';
+export const CHANGE_FAVORITES = 'CHANGE_FAVORITES';
 const errorMSG = 'Sorry, we haven\'t found any recipes for these filters.';
 
 // MEAL REDUCER ACTIONS
@@ -129,4 +130,10 @@ export function requestDrinksByType(endpoint, search) {
 export const setType = (type) => ({
   type: SET_TYPE,
   payload: type,
+});
+
+// FAVORITE REDUCER ACTIONS
+
+export const changeFavorites = () => ({
+  type: CHANGE_FAVORITES,
 });
