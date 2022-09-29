@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import Recipes from './pages/Recipes';
+import MealRecipe from './components/MealRecipe';
+import DrinkRecipe from './components/DrinkRecipe';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
