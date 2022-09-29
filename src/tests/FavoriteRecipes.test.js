@@ -107,4 +107,14 @@ describe('Tela de receita favoritas', () => {
       expect(screen.queryByTestId(`${index}${CARD_FAVORITE_BUTTON}`)).toBeNull();
     }
   });
+
+  test('verifica se ao "desfavoritar" uma receita ela some da tela', () => {
+    renderWithRouterAndRedux(<App />, undefined, ROUTE);
+
+    const FIRST_RECIPE = screen.getByTestId(`3${CARD_NAME}`);
+
+    expect(FIRST_RECIPE).toBeInTheDocument();
+    userEvent.click(screen.getByTestId(`3${CARD_FAVORITE_BUTTON}`));
+    expect(FIRST_RECIPE).not.toBeInTheDocument();
+  });
 });

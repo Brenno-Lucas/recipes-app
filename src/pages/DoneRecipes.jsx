@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import SimpleFilter from '../components/SimpleFilter';
-// import { doneRecipes } from '../tests/mocks/localStorageMock';
 import DoneCard from '../components/DoneCard';
 
 function DoneRecipes({ filterType }) {
@@ -13,8 +12,6 @@ function DoneRecipes({ filterType }) {
   const [doneDrinksList, setDoneDrinksList] = useState([]);
 
   useEffect(() => {
-    // localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
-
     const filterListByType = (list, recipeType) => (
       list.filter(({ type }) => type === recipeType));
 
