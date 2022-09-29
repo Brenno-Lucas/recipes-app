@@ -38,7 +38,7 @@ export default function FavoriteButton(props) {
         <img
           data-testid="favorite-btn"
           src={ isFavorite ? blackHeartIcon : whiteHeartIcon }
-          alt="Icone de coração"
+          alt="Ícone de coração"
         />
       </figure>
     </button>

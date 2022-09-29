@@ -63,7 +63,7 @@ export default function DrinkRecipe({ match }) {
 
   return (
     <section className="recipe-details-container">
-      <ShareButton />
+      <ShareButton type="drinks" id={ idDrink } index={ 0 } />
       {
         Object.keys(drinkInfo).length
         && (
