@@ -6,9 +6,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import Recipes from './pages/Recipes';
-import MealRecipe from './components/MealRecipe';
-import DrinkRecipe from './components/DrinkRecipe';
-import favoriteRecipes from './pages/FavoriteRecipes';
+import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
   return (
@@ -17,13 +15,13 @@ function App() {
         <Route exact path="/" component={ Login } />
         <Route exact path="/meals" component={ Recipes } />
         <Route exact path="/drinks" component={ Recipes } />
-        <Route exact path="/meals/:id" component={ MealRecipe } />
-        <Route exact path="/drinks/:id" component={ DrinkRecipe } />
-        {/* <Route exact path="/meals/:id/in-progress" component={  } />
-        <Route exact path="/drinks/:id/in-progress" component={  } /> */}
+        {/* <Route exact path="/meals/:meal-id" component={  } /> */}
+        {/* <Route exact path="/drinks/:drink-id" component={  } /> */}
+        {/* <Route exact path="/meals/:meal-id/in-progress" component={ MealInProgress } /> */}
+        {/* <Route exact path="/drinks/:drink-id/in-progress" component={ DrinkInProgress } /> */}
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
-        <Route exact path="/favorite-recipes" component={ favoriteRecipes } />
+        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
         {/* <Route exact path="/not-found" component={  } /> */}
       </Switch>
     </main>
