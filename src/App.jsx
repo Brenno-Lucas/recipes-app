@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/drinks/:id/in-progress" component={ recipesInProgress } />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
-        <Route exact path="/favorite-recipes" component={ favoriteRecipes } />
+        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
         {/* <Route exact path="/not-found" component={  } /> */}
       </Switch>
     </main>
