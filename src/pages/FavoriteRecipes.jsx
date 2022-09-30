@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import SimpleFilter from '../components/SimpleFilter';
 import FavoriteCard from '../components/FavoriteCard';
-// * Local Storage para testes locais;
-// import mockLocalStorageFavorite from '../utils/helpers/mockLocalStorage';
 
 function FavoriteRecipes({ filterType, changedFavorites }) {
   const [favoriteRecipesList, setFavoriteRecipesList] = useState([]);
@@ -14,9 +12,6 @@ function FavoriteRecipes({ filterType, changedFavorites }) {
   const [favoriteDrinksList, setFavoriteDrinksList] = useState([]);
 
   useEffect(() => {
-    // * Local Storage para testes locais;
-    // localStorage.setItem('favoriteRecipes', JSON.stringify(mockLocalStorageFavorite));
-
     const filterListByType = (list, recipeType) => (
       list.filter(({ type }) => type === recipeType));
 

@@ -10,7 +10,6 @@ function SimpleFilter({ setFilterType }) {
 
   const handleClick = ({ target }) => {
     const { value } = target;
-    console.log(value);
     setFilterType(value);
   };
 

@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import UnfavoriteButton from './UnfavoriteButton';
 import ShareButton from './ShareButton';
 import '../styles/FavoriteRecipes.css';
 
-function FavoriteCard({ recipe, index }) {
-  const { image, name, category, nationality, alcoholicOrNot, type, id } = recipe;
+function DoneCard({ recipe, index }) {
+  const {
+    image,
+    name,
+    category,
+    nationality,
+    alcoholicOrNot,
+    type,
+    id,
+    doneDate,
+    tags,
+  } = recipe;
 
   const [recipeCategory, setRecipeCategory] = useState('');
 
@@ -33,18 +42,31 @@ function FavoriteCard({ recipe, index }) {
         <p data-testid={ `${index}-horizontal-name` }>{name}</p>
       </Link>
 
+      <p data-testid={ `${index}-horizontal-done-date` }>{`Done in: ${doneDate}`}</p>
+
+      <div>
+        {
+          tags.map((tag, tagIndex) => (
+            <p
+              key={ tagIndex }
+              data-testid={ `${index}-${tag}-horizontal-tag` }
+            >
+              {tag}
+            </p>
+          ))
+        }
+      </div>
+
       <p data-testid={ `${index}-horizontal-top-text` }>
         {`${nationality} - ${recipeCategory}`}
       </p>
 
       <ShareButton type={ `${type}s` } id={ id } index={ index } />
-
-      <UnfavoriteButton id={ id } index={ index } />
     </div>
   );
 }
 
-FavoriteCard.propTypes = {
+DoneCard.propTypes = {
   recipe: PropTypes.shape({
     alcoholicOrNot: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
@@ -53,8 +75,10 @@ FavoriteCard.propTypes = {
     name: PropTypes.string.isRequired,
     nationality: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    doneDate: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
 
-export default FavoriteCard;
+export default DoneCard;

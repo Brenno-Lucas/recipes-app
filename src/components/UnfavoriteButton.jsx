@@ -8,7 +8,7 @@ import { changeFavorites } from '../redux/actions';
 
 function UnfavoriteButton({ id: recipeId, index, changeFavoritesRecipes }) {
   const removeFromFavorites = () => {
-    const recipesData = getItemFromStorage(FAVORITE_RECIPES) ?? [];
+    const recipesData = getItemFromStorage(FAVORITE_RECIPES);
     const updatedRecipes = recipesData.filter(({ id }) => id !== recipeId);
     saveItemInStorage(FAVORITE_RECIPES, updatedRecipes);
     changeFavoritesRecipes();
