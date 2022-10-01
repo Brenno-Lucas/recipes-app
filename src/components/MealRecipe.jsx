@@ -104,9 +104,9 @@ export default function MealRecipe({ match }) {
       <p data-testid="instructions">{strInstructions}</p>
 
       <iframe
-        width="853"
-        height="480"
-        src={ strYoutube }
+        width="300"
+        height="200"
+        src={ strYoutube?.replace('watch?v=', 'embed/') }
         frameBorder="0"
         allowFullScreen
         title="Embedded youtube"

@@ -4,16 +4,16 @@ import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 
 export default function ShareButton({ type, id, index }) {
-  const [linkCopied, setLinkCopied] = useState('');
+  const [linkCopied, setLinkCopied] = useState(false);
   const [timeoutId, setTimeoutId] = useState(0);
 
   const copyRecipeLink = () => {
     copy(`http://${window.location.hostname}:3000/${type}/${id}`);
-    setLinkCopied('Link copied!');
+    setLinkCopied(true);
 
     const timeoutTimer = 2000;
     const timeoutUniqueId = setTimeout(() => {
-      setLinkCopied('');
+      setLinkCopied(false);
     }, timeoutTimer);
 
     setTimeoutId(timeoutUniqueId);
@@ -41,9 +41,7 @@ export default function ShareButton({ type, id, index }) {
           />
         </figure>
       </button>
-      {
-        linkCopied
-      }
+      { linkCopied && <p>Link copied!</p> }
     </div>
   );
 }

@@ -83,3 +83,9 @@ export const doneRecipes = [
     tags: ['bun', 'baking'],
   },
 ];
+
+export const inProgressRecipes = {
+  drinks: {
+    53060: [],
+  },
+};
